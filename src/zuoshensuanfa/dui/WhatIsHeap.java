@@ -33,7 +33,7 @@ package zuoshensuanfa.dui;
  * 5    4
  * /\   / \
  * 4  3  3  0
- * 完全大根堆的每一颗子树，它的最小值一定是根节点，如：
+ * 完全小根堆的每一颗子树，它的最小值一定是根节点，如：
  * 1
  * / \
  * 3   2
@@ -119,5 +119,4 @@ public class WhatIsHeap {
             System.out.print(i + ",");
         }
     }
-
 }
