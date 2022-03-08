@@ -1,0 +1,48 @@
+一，类集主要接口
+1.Collection:存放单值的最大父接口
+2.List:是Collection的子接口，值是允许重复的
+3.Set:也是Collection的子接口，不允许有重复值
+4.Map:存放键值对元素的最大父接口
+5.Iterator:集合输出接口，只能从前向后单向输出
+6.ListIterator:是Iterator的子接口，可从前往后或者从后往前单向输出
+7.SortedSet:是Collection的子接口，单值排序接口，对元素可使用比较器排序
+8.SortedMap:单值排序接口，对键值对可使用比较器按Key排序
+9.Queue:是Collection的子接口，队列接口，其子类可实现队列操作
+10.Map.Entry:Map的组成部分，保存key-value的内容
+
+11,List的子类有ArrayList,Vector
+ArrayList是异步处理方式，性能更高，非线程安全
+Vector同步处理性能较低，但是线程安全
+
+12,LinkedList链表操作，同时实现了List和Queue接口
+13,Queue是队列操作，采用先进先出操作，对头指向新加入的对象，
+
+14,HashSet是Set的子类，不能存放重复元素，而且采用散列的存储方式，没有顺序
+15,TreeSet也是继承了AbstractSet,实现了SortedSet接口，可以有序排列，需要指定排序规则，且对象要实现Comparable接口才可以指定排序规则
+自定义一个类实现排序,这个类必须实现Comparable接口
+
+16，而元素是自定义类的对象组成的情况下，HashSet和TreeSet要避免元素重复，类必须重写Object中的equals()和hashCode()
+17，SortedSet接口，主要用来排序
+
+18.”只要是集合输出的操作，一律使用标准的Iterator接口“
+Iterator,标准的迭代输出
+ListIterator,是Iterator子接口，功能与Iterator相似,可以双向输出
+Enumeration,老接口，功能与Iterator类似
+foreach,jdk1.5后提供的遍历
+
+19.Map接口常用子类：
+1)HashMap 异步处理方式，性能更高，非线程安全，允许key值设为null
+2)HashTable 同步处理方式，性能低，线程安全，不允许key值为null
+除此之外二者操作方法没有太大区别。
+3)TreeMap 可以按Key排序，key的类要实现Comparable接口
+4)WeakHashMap 弱引用类，垃圾回收时会释放掉集合中的垃圾信息
+5)IdentityHashMap 允许key重复
+6)SortedMap可以实现排序操作，TreeMap就实现了SortedMap接口
+注意：
+Map不能直接使用迭代输出，必须：
+1> Map实例通过entrySet转换为key的Set
+2> 通过Set为Iterator实例化
+3> Iterator迭代出Map.Entry再获取vale
+如果是自定义实体类作为key,则需要类重写hashCode和equals方法
+
+20.Collections 提供了一系列集合操作的方法

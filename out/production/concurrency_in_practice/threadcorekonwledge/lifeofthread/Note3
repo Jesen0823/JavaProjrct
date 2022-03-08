@@ -1,0 +1,11 @@
+一，线程的状态
+1）
+New
+Runnable
+Blocked(一定是Synchronized且没有拿到锁陷入等待)
+Waiting
+Timed Waiting 计时等待
+Terminated 已终止
+
+2)什么是阻塞？
+Blocked,Waiting,Timed_waiting 都可以称为阻塞状态

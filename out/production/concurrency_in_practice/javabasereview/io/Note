@@ -1,0 +1,57 @@
+一，文件流流的操作
+java的IO流有两种操作：
+1)字节流 OutputStream,InputStream
+主要操作byte类型数组
+一般使用子类FileOutputStream,FileInputStream
+
+2)字符流 Writer,Reader
+一般使用子类FileWriter
+
+1.区别：
+字节流没有用缓存区，直接操作了文件
+而字符流用到了缓存区，如果不关闭输出输入流，文件无法预期保存或读取，可以用flush()强制刷新
+缓存区就是一段内存区域，用来暂存数据以提高性能
+
+2.字节流-字符流转换类
+OutputStreamWriter,字符流转变为字节流保存
+InputStreamReader，字节流转换为字符流读取
+
+二，内存操作流
+一般生成临时信息才用到
+ByteArrayInputStream 将内容写入到内存
+ByteArrayOutputStream 将内存中的数据输出
+
+三，键盘输入
+1. BufferReader 用于从缓冲区读取内容，该类方法只接受字符输入流，
+所有输入字节流都放在缓冲区，所以要转换为字符流才能使用
+2.jdk1.5之后提供了专门输入数据类Scanner类，可直接使用字节流
+
+四，数据操作流
+与平台无关的数据操作流DataOutputStream,DataInputStream
+
+五，合并流SequenceInputStream，用来将两个文件的内容合并为一个文件
+
+六，压缩流
+1.ZIP系列的类：ZipFile,ZipOutputStream,ZipInputStream,ZipEntry
+其中ZipEntry表示每一个子文件
+2.JAR系列：JarOutputStream,JarInputStream,JARFile,JAREntry
+3.GZIP系列:GZIPOutputStream,GZIPInputStream
+
+七，管道流PipedInputStream,PipedOutputStream
+主要作用是进行两个线程之间的通信,使用之前必须进行connect
+
+八，打印流是输出信息类，包含字节打印流PrintStream和字符打印流PrintWriter
+PrintStream是OutputStream子类
+
+九，对象序列化
+是指把对象变为二进制数据流，方便对象的传输和存储
+1.Serializable接口
+对象序列化和反序列化，要考虑JDK版本问题，如果jdk版本不一致可能造成异常，所以序列化操作引入常量serialVersionUID验证版本的一致性
+如果不显示定义一个serialVersionUID，java序列化机制在编译时会自动生成一个次版本的serialVersionUID
+2.Externalizable接口
+是Serializable的子接口，定义了writerExternal(ObjectOutput o)和readExternal(ObjectInput in)方法
+使用Exterbalizavle接口可以指定需要实例化的属性内容，使用Externalizable的类必须包含一个无参构造
+该无参构造方法会在反序列化时默认调用
+
+
+

@@ -1,0 +1,88 @@
+java常用类库
+1.StringBuffer
+常用方法append(),indexOf(),reverse(),replace(),subString(),delete()
+
+2.Runtime
+一个封装了JVM进程的类 Runtime.getRuntime()
+常用方法freeMemory(),maxMemory(),gc(),exec()
+JVM进程有默认的可用内存，可以利用启动参数来调整可用内存的大小，参数如下：
+1) 堆内存(heap)的设置，主要设置年轻代与旧生代空间：
+“-Xms”,初始分配内存，默认大小1/64物理内存，小于1GB
+“-Xmx”,最大分配内存，默认大小1/4物理内存，小于1GB
+"-Xmn",年轻代堆内存大小
+默认空余内存小于40%时，JVM会增大堆直到最大分配内存值
+默认空余内存大于70%时，JVM会减少堆直到初始分配内存的最小限制
+实际开发中Xms,Xmx一般设置相同大小，避免每次执行GC后再次调整堆内存
+2）非堆内存设置，主要是永久代的设置（JDK1.8中已经删除此类操作）
+“-XX:PermSize”设置最小分配空间
+“-XX:MaxPermSize”设置最大分配空间
+
+示例：
+java -Xms1024M -Xmx1024M -Xmn512M com.yoo.demo.TestDemo
+
+3.Java中的内存主要分为堆内存和非堆内存：
+1）堆内存包含两部分，年轻代与旧生代：
+类的实例化对象以及数组都是堆内存保存的
+每一个JVM进程中，对象的堆内存空间都由垃圾收集器自动管理内存回收
+
+年轻代(Eden伊甸园+FrontSpace源空间+ToSpace目标空间)主要用于产生新对象
+旧生代(Old Space) 存放程序中生命周期最长的存活对象
+
+2）非堆内存，是由JVM自己维护的，包括：
+所有线程共享的方法内存区，负责存储每个类的结构信息，是JVM启动时创建的
+JVM启动和运行时，专门用于内部处理与优化的内存。如Just-In-Time Compiler即时编译器，将java程序编译为适合操作系统的代码
+永久代Permanent Generation,负责存放JVM自己的反射对象反射方法
+
+4.垃圾回收与对象创建
+垃圾回收主要是对年轻代与旧生代的内存进行回收。
+年轻代内存主要放新产生的对象，经过若干次回收而未被回收的对象会向旧生代内存转移
+MinorGC:从垃圾收集，指对年轻代进行 垃圾回收
+MajorGC:主垃圾收集，指对旧生代进行垃圾回收
+这另个内存回收互不干涉。
+Java中对象的回收机制是分代回收策略：
+高频率对年轻代扫描回收，而用低频率对旧生代扫描回收，这样做的好处是不需要每次执行GC时将内存中的所有对象检查一遍。
+GC执行的理解：
+GC就是垃圾收集释放无用空间，一个对象如果不被任何栈内存引用就是垃圾对象可以被回收，一般由系统不定期自动回收，或者调用Runtime.gc()主动回收
+JVM剩余内存空间不足会触发GC,当Eden内存空间不足进行从回收，旧生代空间不足进行主回收，当永久代空间不足时进行完全垃圾回收FullCollection
+对象的创建：
+1)JVM会为新对象在Eden区域初始化一块内存空间
+2)Eden空间足够时内存申请结束；Eden空间不够时，JVM试图释放Eden中不活跃的对象，此为1级垃圾回收
+如果Eden释放后仍空间不足，则试图将Eden中部分活跃对象保存到存活空间Survivor Space.
+3)存活空间是Eden旧生代的中间交换区域，旧生代空间足够时，存活区域的对象会被移动到旧生代，否则就滞留存活区。
+4)旧生代空间不足时，JVM会在旧生代区完全垃圾回收，此为0级垃圾回收。
+5)完全垃圾回收后，如果Eden的对象还是无法复制到存活区和旧生代区，导致JVM无法在Eden区为新对象创建内存区域，会出现“OutOfMemoryError”
+
+对象生命周期：
+类加载后，对象初始化，对象不再使用则垃圾回收，对象终结卸载
+
+
+5.System类
+常用方法exit(),gc(),currentTimeMillis(),arrayCopy(),getProperties(),getProperty(String key)
+重写Object类方法finalize()可以在释放对象前处理某些工作。
+
+6.日期操作类
+1）Data类
+2)Calender抽象类
+Calender c = new GregorianCalendar()
+3)DateFormat类
+4)SimpleDateFormat格式化日期类
+
+7.Math类
+round()四舍五入，小数位会被省略，如果是负数，小数位必须>0.5才向整数进位
+解决办法有两种：BigDecimal或者Math.round(num*Math.pow(10.0,scale))/Math.pow(10.0,scale)
+
+8.对象克隆技术
+Object提供了clone()方法，对象所在的类必须实现Cloneable接口并覆写clone()方法
+
+9.Arrays类
+数组的操作类，实现元素的查找，填充，排序等
+equals(),fill(),sort(),binarySearch()
+但是sort()方法必须结合比较器使用
+
+10.比较器Comparable接口和Comparator接口
+
+11.定时调度
+执行定时操作
+Timer是一种线程类，实现在某一个时间或某一段时间后安排执行某个任务或者定期重复执行任务，要与TimerTask配合使用
+TimerTask用来实现一次具体的任务
+
