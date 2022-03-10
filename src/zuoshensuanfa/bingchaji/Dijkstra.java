@@ -13,6 +13,7 @@ import java.util.Map.Entry;
  *
  * */
 public class Dijkstra {
+
     public static HashMap<GNode, Integer> dijkstra1(GNode head) {
         HashMap<GNode, Integer> distanceMap = new HashMap<>();
         distanceMap.put(head, 0);
@@ -138,6 +139,11 @@ public class Dijkstra {
         }
     }
 
+    /**
+     * 方法2：自定义小根堆实现
+     * 从head出发 所有能到达的节点生成，每个到达节点的最小路径
+     *
+     * */
     public static HashMap<GNode, Integer> dijkstra2(GNode head, int size) {
         NodeHeap nodeHeap = new NodeHeap(size);
         nodeHeap.addOrUpdateOrIgnore(head, 0);
