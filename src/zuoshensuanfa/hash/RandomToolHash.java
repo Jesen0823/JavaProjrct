@@ -1,5 +1,4 @@
 package zuoshensuanfa.hash;
-
 import java.util.HashMap;
 
 /**

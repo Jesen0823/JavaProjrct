@@ -35,16 +35,19 @@ public class MaoPaoSort {
 
     // 产生随机样本
     public static int[] generateRandomArray(int maxSize, int maxValue) {
-        int[] aar = new int[(int) ((maxSize + 1) * Math.random())];
-        for (int i = 0; i < aar.length; i++) {
-            aar[i] = (int) ((maxValue + 1) * Math.random()) - (int) (maxValue * Math.random());
+        int[] arr = new int[(int) ((maxSize + 1) * Math.random())];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = (int) ((maxValue + 1) * Math.random()) - (int) (maxValue * Math.random());
         }
-        return aar;
+        return arr;
     }
 
 
     public static void main(String[] args) {
-        int[] test = generateRandomArray(100, 100);
+        int[] test = {5,3,4,9,12,7,8,1};
         bubbleSort(test);
+        for (int item:test) {
+            System.out.print(item+", ");
+        }
     }
 }

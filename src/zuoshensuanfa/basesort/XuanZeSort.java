@@ -12,9 +12,9 @@ public class XuanZeSort {
         if (arr == null || arr.length < 2) return arr;
 
         for (int i = 0; i < arr.length - 1; i++) {
-            int minIndex = 0;
-            for (int j = i+1; j < arr.length; j++) {
-                minIndex = arr[j] < arr[minIndex] ? j:minIndex;
+            int minIndex = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                minIndex = arr[j] < arr[minIndex] ? j : minIndex;
             }
             swap(arr, i, minIndex);
         }
@@ -28,7 +28,7 @@ public class XuanZeSort {
     }
 
     public static void main(String[] args) {
-        int[] test = new int[]{1,12,3,4,5,10,5,2,7};
+        int[] test = {5,3,4,9,12,7,8,1};
         int[] result=selectionSort(test);
         for (int item:result) {
             System.out.print(item+", ");

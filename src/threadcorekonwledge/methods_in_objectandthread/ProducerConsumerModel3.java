@@ -28,7 +28,7 @@ class Producer implements Runnable{
     @Override
     public void run() {
         for (int i = 0; i < 100; i++){
-            storage.put();
+            storage.put("Producer");
         }
     }
 }
@@ -44,7 +44,7 @@ class Consumer implements Runnable{
     @Override
     public void run() {
         for (int i = 0; i < 100; i++){
-            storage.take();
+            storage.take("Consumer");
         }
     }
 }
@@ -61,7 +61,7 @@ class EventStorage{
     }
 
     /* 如果仓库满了就阻塞，如果没满就生产数据并通知对方*/
-    public synchronized void put(){
+    public synchronized void put(String name){
         while (storage.size() == maxSize){
             try {
                 wait();
@@ -70,11 +70,11 @@ class EventStorage{
             }
         }
         storage.add(new Date());
-        System.out.println("仓库容量："+ storage.size());
+        System.out.println(name+"添加了1个 仓库容量："+ storage.size());
         notify();
     }
 
-    public synchronized void take(){
+    public synchronized void take(String name){
         while (storage.size() == 0){
             try {
                 wait();
@@ -85,7 +85,7 @@ class EventStorage{
         /*System.out.println("拿到了" + storage.get(0)+"仓库还剩："+ storage.size());
         storage.remove(0);*/
         //等价代码：
-        System.out.println("拿到了" + storage.poll()+"仓库还剩："+ storage.size());
+        System.out.println(name+" 拿到了" + storage.poll()+"仓库还剩："+ storage.size());
         notify();
     }
 }
