@@ -44,7 +44,7 @@ import java.util.HashMap;
  * 接下来设置副本节点(图中实心)的rand节点
  * 设置完成后拆分出原链表，剩下的是新链表
  */
-class RandRandNodeList {
+class RandNodeList {
 
     /**
      * 方法1：借助容器HashMap实现复制链表

@@ -10,7 +10,7 @@ public class ReverseList {
      */
     public static SingleNode reverseV1(SingleNode node, SingleNode pre) {
         if (node == null) {
-            return node;
+            return null;
         } else {
             // 反转后的头结点
             SingleNode headNode;
@@ -50,11 +50,12 @@ public class ReverseList {
      * 打印链表信息 * * @param node
      */
     public static void printLink(SingleNode node) {
-        System.out.println("current node data:" + node.data + ", next node data:" + node.getNextNodeData());
+        System.out.print(node.data);
         if (node.next != null) {
+            System.out.print(" -> ");
             printLink(node.next);
         } else {
-            System.out.println("-------------");
+            System.out.println("\n -------------");
         }
     }
 
@@ -67,7 +68,8 @@ public class ReverseList {
         s2.next = s3;
         s3.next = s4;
         printLink(s1);
-        SingleNode<String> firstNode = reverseV2(s1);
+        //SingleNode<String> firstNode = reverseV2(s1);
+        SingleNode<String> firstNode = reverseV1(s1,null);
         printLink(firstNode);
     }
 }

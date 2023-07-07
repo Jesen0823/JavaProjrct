@@ -61,6 +61,11 @@ public class RandomToolHash {
         pool.insert("巴尔扎克");
         pool.insert("余华");
         pool.insert("海燕");
+        pool.insert("许巍");
+        pool.insert("杨万里");
+        pool.insert("徐阶");
+        pool.insert("马尔克斯");
+        pool.insert("八大山人");
         System.out.println(pool.getRandom());
     }
 }

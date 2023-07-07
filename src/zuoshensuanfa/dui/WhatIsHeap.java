@@ -1,5 +1,7 @@
 package zuoshensuanfa.dui;
 
+import zuoshensuanfa.Utils;
+
 /**
  * 1). 什么是堆？
  * 堆是一种特殊的平衡二叉树
@@ -51,7 +53,7 @@ package zuoshensuanfa.dui;
  * }
  * }
  * <p>
- *     
+ * <p>
  * 6). 假设给定一些数，形成大根堆，然后要求去掉最大数后，剩下的仍然是一个大根堆
  * 方案： 先去掉大根节点，即0位置的数，然后把最后一个数放m到0位置，作为大根(暂时不管m的大小)
  * 然后 heapSize--;
@@ -61,8 +63,7 @@ public class WhatIsHeap {
 
     /**
      * 堆排序 N*log(N)
-     *
-     * */
+     */
     public static void heapSort(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
@@ -118,5 +119,12 @@ public class WhatIsHeap {
         for (int i : test) {
             System.out.print(i + ",");
         }
+
+        int[] test2 = Utils.generateRandomArray(200000, 10000);
+        long t1 = System.currentTimeMillis();
+        heapSort(test2);
+        long t2 = System.currentTimeMillis();
+        // 测得200000条数据耗时112毫秒
+        System.out.println("data size:"+test2.length+", sort end,use time:"+(t2-t1));
     }
 }

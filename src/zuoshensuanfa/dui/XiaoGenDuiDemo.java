@@ -15,6 +15,7 @@ public class XiaoGenDuiDemo {
 
 
     public static void sortArrDistanceLessK(int[] arr, int k){
+        // 优先队列默认就是小根堆
         PriorityQueue<Integer> heap = new PriorityQueue<>();
         int index = 0;
         // 先把前k个数放入小根堆

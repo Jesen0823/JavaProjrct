@@ -1,5 +1,7 @@
 package zuoshensuanfa.digui;
 
+import zuoshensuanfa.Utils;
+
 /**
  * 归并排序 O(N *logN) 空间O(N)
  * <p>
@@ -17,12 +19,14 @@ public class GuiBingSort {
     }
 
     private static void process(int[] arr, int l, int r) {
-        if (l == r) {
+        if (l >= r) {
             return;
         }
 
         int mid = l + ((r - l) >> 1);
+        // 左边递归
         process(arr, l, mid);
+        // 右边递归
         process(arr, mid + 1, r);
         merge(arr, l, mid, r);
     }
@@ -56,5 +60,12 @@ public class GuiBingSort {
         for (int item : test) {
             System.out.print(item + ", ");
         }
+
+        int[] test2 = Utils.generateRandomArray(200000, 10000);
+        long t1 = System.currentTimeMillis();
+        mergeSort(test2);
+        long t2 = System.currentTimeMillis();
+        // 测得200000条数据耗时26毫秒
+        System.out.println("sort end,use time:"+(t2-t1));
     }
 }

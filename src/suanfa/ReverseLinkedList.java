@@ -73,6 +73,8 @@ public class ReverseLinkedList {
         }
         System.out.print(h.val + ",");
 
+        System.out.println("\n-------------");
+
 
         ListNode hh =  reverseList(head);
         while (hh.hasNext()){
@@ -83,7 +85,7 @@ public class ReverseLinkedList {
 
         // 是否有环：
         boolean isCircle = hasCycle(head);
-        System.out.println("is has Circle: "+ isCircle);
+        System.out.println("\n is has Circle: "+ isCircle);
     }
 
 

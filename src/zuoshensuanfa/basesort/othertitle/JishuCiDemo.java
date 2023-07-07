@@ -1,5 +1,7 @@
 package zuoshensuanfa.basesort.othertitle;
 
+import zuoshensuanfa.Utils;
+
 /**
  * 给定数组中：
  * 1）只有一种数是出现了奇数次，其他数都是偶数次 如: [2,13,2,4,4]
@@ -44,5 +46,12 @@ public class JishuCiDemo {
 
         int[] test2 = {2,13,2,13,4,4,5,13,11,5};
         findTwoJishuNum(test2);
+
+        int[] test3 = Utils.generateRandomArray(200000, 10000);
+        long t1 = System.currentTimeMillis();
+        findTwoJishuNum(test3);
+        long t2 = System.currentTimeMillis();
+        // 测得200000条数据耗时5毫秒
+        System.out.println("data length:"+test3.length+", use time:" + (t2 - t1));
     }
 }

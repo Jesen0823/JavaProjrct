@@ -65,7 +65,7 @@ public class NodeListCycleCheck {
      * 1.2> 不一致则不相交,接下来不需要判断,形如‘||’
      * 2) 都有环，三种情况：
      * 2.1> 独立成环 ‘бб’
-     * 2.2> 公用环入环节点一样 '>-O'
+     * 2.2> 公用环入环节点一样 '>O'
      * 2.3> 公用环入环节点不同 '=O'
      */
     public static Node getIntersectNode(Node head1,Node head2){
@@ -233,6 +233,6 @@ public class NodeListCycleCheck {
         node7.next.next = node8;
 
         Node point = getIntersectNode(head1, head2);
-        System.out.print("两链表相较于：" + point.value);
+        System.out.print("两链表相交于：" + point.value);
     }
 }

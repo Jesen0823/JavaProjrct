@@ -30,10 +30,10 @@ import zuoshensuanfa.lianbiao.bean.Node;
  *  >区的头：bH = null
  *  >区的尾：bT = null
  *
- *   1) 先看第1个节点, ④ < 5, 则 sH=④ sT = ④
- *   2)看第2个，⑥ > 5, 则 bH = ⑥  bT = ⑥
- *   3) 看第3个，③ < 5, 则 ④->③, sH= ④ sT=③
- *   4)看第4个, eH = ⑤, eT = ⑤
+ *   1)先看第1个节点, ④ < 5, 则 sH=④ sT = ④
+ *   2)看第2个，⑥ > 5, 则 bH = ⑥   bT = ⑥
+ *   3)看第3个，③ < 5, 则 ④->③,  sH= ④   sT=③
+ *   4)看第4个, eH = ⑤,  eT = ⑤
  *   ...
  *   i)最后，得到：
  *       sH = ④ sT = ② 且 ④->③->②
@@ -104,12 +104,12 @@ public class NodeListToArry {
      *
      * */
     public static Node listPartition2(Node head, int pivot) {
-        Node sH = null; // small head
-        Node sT = null; // small tail
-        Node eH = null; // equal head
-        Node eT = null; // equal tail
-        Node bH = null; // big head
-        Node bT = null; // big tail
+        Node sH = null;   // small head
+        Node sT = null;    // small tail
+        Node eH = null;   // equal head
+        Node eT = null;    // equal tail
+        Node bH = null;   // big head
+        Node bT = null;    // big tail
         Node next = null; // save next node
         // every node distributed to three lists
         while (head != null) {
@@ -171,6 +171,7 @@ public class NodeListToArry {
             System.out.print(newHead.value+"-> ");
             newHead = newHead.next;
         }while (newHead != null);
+        System.out.print("null");
     }
 
 }

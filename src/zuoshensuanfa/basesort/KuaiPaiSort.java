@@ -1,5 +1,7 @@
 package zuoshensuanfa.basesort;
 
+import zuoshensuanfa.Utils;
+
 import java.util.Arrays;
 
 /**
@@ -22,7 +24,7 @@ public class KuaiPaiSort {
 
     /**
      * 快排 1.0: O(N2)
-     * 数组中最后一个数作为num, 前面的数用num分割，小于的放左边大于的放右边，即  <=num | >=num |num|
+     * 数组中最后一个数作为num, 前面的数用num分割，小于的放左边大于的放右边，即  <=num | >num |num|
      * 然后把大于区的与num比较交换，小的放前面
      * 于是相当于小于区被扩充
      *
@@ -52,10 +54,10 @@ public class KuaiPaiSort {
      */
 
     public static int[] quickSort(int[] pa) {
-        int[] arr = Arrays.copyOf(pa,pa.length);
-        if (arr == null || arr.length < 2) {
+        if (pa == null || pa.length < 2) {
             return pa;
         }
+        int[] arr = Arrays.copyOf(pa,pa.length);
         quickSort(arr, 0, arr.length - 1);
         return arr;
     }
@@ -81,8 +83,10 @@ public class KuaiPaiSort {
         int more = r;
         while (l < more) {
             if (arr[l] < arr[r]) {
+                // 交换，小于区右扩
                 swap(arr, ++less, l++);
             } else if (arr[l] > arr[r]) {
+                // 交换，大于区左扩
                 swap(arr, --more, l);
             } else {
                 l++;
@@ -105,5 +109,12 @@ public class KuaiPaiSort {
         for (int i : result) {
             System.out.print(i+", ");
         }
+
+        int[] test2 = Utils.generateRandomArray(200000, 10000);
+        long t1 = System.currentTimeMillis();
+        int[] result2 = quickSort(test2);
+        long t2 = System.currentTimeMillis();
+        // 测得200000条数据耗时20毫秒
+        System.out.println("use time:"+(t2-t1));
     }
 }
