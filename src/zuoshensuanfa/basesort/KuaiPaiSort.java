@@ -110,7 +110,7 @@ public class KuaiPaiSort {
             System.out.print(i+", ");
         }
 
-        int[] test2 = Utils.generateRandomArray(200000, 10000);
+        int[] test2 = Utils.generateRandomArray(100000, 10000);
         long t1 = System.currentTimeMillis();
         int[] result2 = quickSort(test2);
         long t2 = System.currentTimeMillis();

@@ -15,27 +15,27 @@ package zuoshensuanfa.basesort;
 public class ErFenChaZhao {
 
     public static void main(String[] args) {
-        int [] test = {1,3,4,4,5,5,6,8,11,13,14};
-        int result = binarySearch(test,6);
-        System.out.println("二分法查找结果："+result);
-        int result2 = binaryNormal(test,6);
-        System.out.println("非递归二分法查找结果："+result2);
+        int[] test = {1, 2, 3, 3, 4, 4, 5, 5, 6, 7, 8, 11, 13, 14};
+        int result = binarySearch(test, 6);
+        System.out.println("二分法查找结果：" + "test[" + result + "]=" + test[result]);
+        int result2 = binaryNormal(test, 6);
+        System.out.println("非递归二分法查找结果：" + "test[" + result2 + "]=" + test[result2]);
     }
 
     /**
      * 方法1. 递归查找
-     * */
+     */
     public static int binarySearch(int[] pts, int dts) {
         return binaryS(pts, 0, pts.length - 1, dts);
     }
 
     public static int binaryS(int[] data, int l, int r, int target) {
         if (l > r) return -1;
-        int mid = l + (r - l) / 2;
+        int mid = l + ((r - l) >> 1);
         if (data[mid] < target) {
             return binaryS(data, mid + 1, r, target);
         } else if (data[mid] == target) {
-            return data[mid];
+            return mid;
         } else {
             return binaryS(data, l, mid - 1, target);
         }
@@ -43,12 +43,12 @@ public class ErFenChaZhao {
 
     /**
      * 方法2：非递归查找
-     * */
+     */
     public static int binaryNormal(int[] pts, int target) {
         int l = 0;
         int r = pts.length - 1;
         while (l < r) {
-            int mid = l + (r - l) /2;
+            int mid = l + (r - l) / 2;
             if (pts[mid] < target) {
                 l = mid + 1;
             } else if (pts[mid] == target) {
@@ -58,37 +58,5 @@ public class ErFenChaZhao {
         return -1;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

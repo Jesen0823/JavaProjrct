@@ -11,7 +11,7 @@ public class KuaipaiSort2 {
             System.out.print(item+",");
         }
 
-        int[] test2 = Utils.generateRandomArray(200000, 10000);
+        int[] test2 = Utils.generateRandomArray(100000, 10000);
         long t1 = System.currentTimeMillis();
         quickSort(test2,0,test2.length-1);
         long t2 = System.currentTimeMillis();

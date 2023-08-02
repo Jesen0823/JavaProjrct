@@ -41,11 +41,13 @@ public class MaoPaoSort {
             System.out.print(item+", ");
         }
 
-        int []rand = Utils.generateRandomArray(14,100);
-
+        int []rand = Utils.generateRandomArray(100000,9000);
+        long begin = System.currentTimeMillis();
         bubbleSort(rand);
-        for (int item:rand) {
+        long end = System.currentTimeMillis();
+        System.out.println(rand.length+"个元素，耗时 "+(end-begin)+" ms");
+       /* for (int item:rand) {
             System.out.print(item+", ");
-        }
+        }*/
     }
 }
