@@ -1,6 +1,6 @@
 package javabasereview.javacommonclass.bean;
 
-import org.jetbrains.annotations.NotNull;
+import com.sun.istack.internal.NotNull;
 
 public class Student implements Comparable<Student> {
     private String name;
