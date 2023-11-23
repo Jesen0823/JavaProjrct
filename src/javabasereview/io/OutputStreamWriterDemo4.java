@@ -9,7 +9,7 @@ public class OutputStreamWriterDemo4 {
     public static void main(String[] args) throws IOException {
         File file = new File(FILE_TEST_PATH);
         Writer writer = new OutputStreamWriter(new FileOutputStream(file));
-        writer.write("字节输出流转为字符输出流保存到硬盘");
+        writer.append("字节输出流转为字符输出流保存到硬盘");
         writer.close();
     }
 }

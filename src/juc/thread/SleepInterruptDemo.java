@@ -14,7 +14,8 @@ public class SleepInterruptDemo {
                 try {
                     TimeUnit.MILLISECONDS.sleep(500);
                 } catch (InterruptedException e) {
-                    // 恢复中断
+                    // t2启动后要中断t1,但是t1处于睡眠中,sleep()方法会清除中断位标记，所以中断失效，抛异常后接着运行，没停下来。那么
+                    // 可以捕获中断异常InterruptedException后，恢复中断
                     // Thread.currentThread().interrupt();
                     e.printStackTrace();
                 }
@@ -31,6 +32,6 @@ public class SleepInterruptDemo {
 
         new Thread(()->{
             t1.interrupt();
-        }).start();
+        },"t2").start();
     }
 }

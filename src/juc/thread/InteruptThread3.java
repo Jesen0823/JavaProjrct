@@ -8,8 +8,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * */
 public class InteruptThread3 {
 
-    static AtomicBoolean isStop = new AtomicBoolean(false);
-
     public static void main(String[] args) {
         Thread t1 = new Thread(() -> {
             while (true) {
@@ -23,7 +21,7 @@ public class InteruptThread3 {
         t1.start();
 
         try {
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

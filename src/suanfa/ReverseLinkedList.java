@@ -32,20 +32,20 @@ public class ReverseLinkedList {
     }
 
     public static boolean hasCycle(ListNode head) {
-        if(head==null || head.next==null){
+        if (head == null || head.next == null) {
             //头指针为空或者只有头节点，无环
             return false;
         }
-        ListNode slow,fast =head;
+        ListNode slow, fast = head;
         slow = head.next;
         fast = head.next.next;
-        while(true){
-            if(fast==null||fast.next==null){
+        while (true) {
+            if (fast == null || fast.next == null) {
                 //fast走到链表尾
                 return false;
-            }else if(fast.next==slow || fast==slow){
+            } else if (fast.next == slow || fast == slow) {
                 return true;
-            }else{
+            } else {
                 slow = slow.next;// slow每次走一步
                 fast = fast.next.next;//fast每次走两步
             }
@@ -67,8 +67,8 @@ public class ReverseLinkedList {
         //node5.next = node3;
 
         ListNode h = head;
-        while (h.hasNext()){
-            System.out.print(h.val+",");
+        while (h.hasNext()) {
+            System.out.print(h.val + ",");
             h = h.next;
         }
         System.out.print(h.val + ",");
@@ -76,16 +76,16 @@ public class ReverseLinkedList {
         System.out.println("\n-------------");
 
 
-        ListNode hh =  reverseList(head);
-        while (hh.hasNext()){
-            System.out.print(hh.val+",");
+        ListNode hh = reverseList(head);
+        while (hh.hasNext()) {
+            System.out.print(hh.val + ",");
             hh = hh.next;
         }
-        System.out.print(hh.val+",");
+        System.out.print(hh.val + ",");
 
         // 是否有环：
         boolean isCircle = hasCycle(head);
-        System.out.println("\n is has Circle: "+ isCircle);
+        System.out.println("\n is has Circle: " + isCircle);
     }
 
 

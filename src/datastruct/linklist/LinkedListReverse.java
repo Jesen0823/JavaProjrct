@@ -14,18 +14,21 @@ public class LinkedListReverse {
     }
 
     public ListNode reverse(ListNode head) {
-        ListNode prev = null;
+        ListNode pre = null;
         ListNode current = head;
         ListNode next = null;
 
         while (current != null) {
+            // 暂存下一个节点
             next = current.next;
-            current.next = prev;
-            prev = current;
+            // 翻转当前节点
+            current.next = pre;
+            // 给两个变量重新赋值
+            pre = current;
             current = next;
         }
 
-        return prev;
+        return pre;
     }
 
     public static void main(String[] args) {

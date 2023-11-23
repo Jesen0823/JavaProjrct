@@ -7,8 +7,8 @@ public class Sort123 {
 
     public static void main(String[] args) {
         int test[] ={1,1,2,0,0,1,1,2,0};
-        //sortCount(test);
-        sortThree(test);
+        sortCount(test);
+        //sortThree(test);
     }
 
     // 计数排序

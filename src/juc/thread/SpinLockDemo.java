@@ -36,6 +36,7 @@ public class SpinLockDemo {
             spinLockDemo.myUnLock();
         },"t1").start();
 
+        // t1线程划水滑了3秒，所以t2线程原地转圈圈，自旋等待
         new Thread(()->{
             spinLockDemo.mylock();
             spinLockDemo.myUnLock();

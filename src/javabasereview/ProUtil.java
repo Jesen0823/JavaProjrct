@@ -21,8 +21,8 @@ public class ProUtil {
             if (file.exists() && file.length() != 0) {
                 pro.load(new FileInputStream(file));
             } else {
-                pro.setProperty("apple", "javabasereview.reflect.factorymode.Apple");
-                pro.setProperty("orange", "javabasereview.reflect.factorymode.Orange");
+                pro.setProperty("apple", "design_patterns_2.create.staticfactory.demo2.factorymode.Apple");
+                pro.setProperty("orange", "design_patterns_2.create.staticfactory.demo2.factorymode.Orange");
                 pro.store(new FileOutputStream(file), "FRUIT_CLASS");
             }
         } catch (Exception e) {

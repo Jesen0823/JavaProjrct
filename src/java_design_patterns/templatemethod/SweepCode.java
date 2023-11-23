@@ -20,12 +20,12 @@ public abstract class SweepCode {
         extendFunction();
     }
 
-    protected boolean checkCameraPermission(){
+    protected final boolean checkCameraPermission(){
         System.out.println("检查相机权限");
         return true;
     }
 
-    protected void openCamera(){
+    protected final void openCamera(){
         System.out.println("打开相机");
     }
 

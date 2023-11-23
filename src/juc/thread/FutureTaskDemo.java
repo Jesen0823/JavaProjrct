@@ -26,10 +26,10 @@ public class FutureTaskDemo {
             }
         }
         System.out.println("---主线程继续");
-        CompletedFuture future;
-        CompletionStage stage;
+        //CompletedFuture future;
+        //CompletionStage stage;
 
-        //System.out.println("返回结果："+futureTask.get());
+        System.out.println("返回结果："+futureTask.get());
     }
 }
 

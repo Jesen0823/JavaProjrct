@@ -115,6 +115,6 @@ public class KuaiPaiSort {
         int[] result2 = quickSort(test2);
         long t2 = System.currentTimeMillis();
         // 测得200000条数据耗时20毫秒
-        System.out.println("use time:"+(t2-t1));
+        System.out.println(test2.length+"条数据，use time:"+(t2-t1)+"ms");
     }
 }

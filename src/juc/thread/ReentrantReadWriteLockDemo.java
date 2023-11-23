@@ -66,7 +66,7 @@ public class ReentrantReadWriteLockDemo
         for (int i = 1; i <=10; i++) {
             int finalI = i;
             new Thread(() -> {
-                myResource.write(finalI +"", finalI +"");
+                myResource.write(finalI +"", finalI +"R");
             },String.valueOf(i)).start();
         }
 

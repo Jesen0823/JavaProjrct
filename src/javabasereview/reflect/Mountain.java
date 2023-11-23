@@ -7,6 +7,8 @@ public class Mountain implements MountainInterface, Serializable {
     private int altitude;
 
     public Mountain() {
+        this.name = "";
+        this.altitude = 0;
     }
 
     public Mountain(String name, int altitude) {
@@ -33,22 +35,19 @@ public class Mountain implements MountainInterface, Serializable {
     @Override
     public String toString() {
         return "Mountain{" +
-                "name='" + name + '\'' +
-                ", altitude=" + altitude +
+                "name='" + ((name.isEmpty()) ? "未知" : name) + '\'' +
+                ", altitude=" + ((altitude == 0) ? "未知" : altitude) +
                 '}';
     }
 
     @Override
     public void climb() {
-        System.out.println("攀登地："+LOCAL+",海拔是否超过5000："+IS_OVER_5000);
+        System.out.println("攀登地：" + LOCAL + ",海拔是否超过5000：" + IS_OVER_5000);
     }
 
     @Override
     public boolean isOver5000(String name, int altitude) throws Exception {
-        System.out.println("主峰："+name+",海拔："+altitude);
-        if (altitude >= 5000){
-            return true;
-        }
-        return false;
+        System.out.println("主峰：" + name + ",海拔：" + altitude);
+        return altitude >= 5000;
     }
 }

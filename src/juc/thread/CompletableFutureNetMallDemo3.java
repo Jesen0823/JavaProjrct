@@ -9,6 +9,9 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+/**
+ * ompletableFuture 异步 商城比价
+ * */
 public class CompletableFutureNetMallDemo3 {
 
     static List<NetMall> list = Arrays.asList(

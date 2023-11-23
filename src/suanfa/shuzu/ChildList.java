@@ -13,6 +13,9 @@ public class ChildList {
 
         int ret = findChildList(test, 7);
         System.out.println(ret);
+
+        int ret2 = findChildList2(test, 7);
+        System.out.println(ret2);
     }
 
     private static int findChildList(int[] arr, int target) {
@@ -36,6 +39,25 @@ public class ChildList {
         if (res == arr.length + 1) {
             return 0;
         }
+        return res;
+    }
+
+    private static int findChildList2(int[] arr, int target) {
+        int l = 0, r = -1;
+        int sum = 0;
+        int res = arr.length + 1;
+        while (l < arr.length) {
+            if (r + 1 < arr.length && sum < target) {
+                r++;
+                sum += arr[r];
+            } else {
+                sum -= arr[l++];
+            }
+            if (sum >= target) {
+                res = Math.min(res, r - l + 1);
+            }
+        }
+        if (res == arr.length + 1) return 0;
         return res;
     }
 }

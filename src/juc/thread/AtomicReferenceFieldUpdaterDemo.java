@@ -6,10 +6,10 @@ import java.util.concurrent.locks.ReentrantLock;
 
 class MyVar {
     public volatile Boolean isInit = Boolean.FALSE;
-    AtomicReferenceFieldUpdater<MyVar, Boolean> FieldUpdater = AtomicReferenceFieldUpdater.newUpdater(MyVar.class, Boolean.class, "isInit");
+    AtomicReferenceFieldUpdater<MyVar, Boolean> fieldUpdater = AtomicReferenceFieldUpdater.newUpdater(MyVar.class, Boolean.class, "isInit");
 
     public void init(MyVar myVar) {
-        if (FieldUpdater.compareAndSet(myVar, Boolean.FALSE, Boolean.TRUE)) {
+        if (fieldUpdater.compareAndSet(myVar, Boolean.FALSE, Boolean.TRUE)) {
             System.out.println(Thread.currentThread().getName() + "\t" + "---start init");
             try {
                 TimeUnit.SECONDS.sleep(3);
@@ -39,7 +39,6 @@ public class AtomicReferenceFieldUpdaterDemo {
             }, String.valueOf(i)).start();
         }
 
-        ReentrantLock lock;
     }
 }
 

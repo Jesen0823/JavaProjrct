@@ -3,14 +3,15 @@ package zuoshensuanfa.basesort;
 import zuoshensuanfa.Utils;
 
 /**
- * 选择排序 O(N2)
+ * 选择排序 O(N2) 每次选择一个最大/最小数
  * 每一个数都跟他后面的数比较，所以是N平方
  * 不断从比较i和i+1位置并交互，每次比较选出一个数
+ *
  */
 public class XuanZeSort {
 
     public static int[] selectionSort(int[] inputArr) {
-        int[] arr = inputArr;
+        int[] arr = inputArr.clone();
         if (arr == null || arr.length < 2) return arr;
 
         // 每个数走一遍
@@ -46,7 +47,7 @@ public class XuanZeSort {
         int[] result2 = selectionSort(test2);
         long t2 = System.currentTimeMillis();
         // 测得200000条数据耗时3.4秒
-        System.out.println("use time:" + (t2 - t1));
+        System.out.println(test2.length+"条数据，use time:" + (t2 - t1)+"ms");
         /*for (int item : result2) {
             System.out.print(item + ", ");
         }*/

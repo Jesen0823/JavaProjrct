@@ -16,7 +16,7 @@ public class DoubleStr {
     // 双指针滑块
     private static int findChongfu(String s) {
         char[] array = s.toCharArray();
-
+        // 每个字母的频率
         int[] freq = new int[256];
         int l = 0, r = -1;  //滑动窗口为s[l,..r]
         int res = 0;

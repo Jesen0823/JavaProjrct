@@ -13,6 +13,13 @@ public class CASABADemo {
     static AtomicStampedReference<Integer> atomicStampedReference = new AtomicStampedReference<>(100, 1);
 
     public static void main(String[] args) {
+        // 造成ABA问题
+        //abaProblem();
+        // 解决ABA
+        resoluteABA();
+    }
+
+    private static void resoluteABA() {
         new Thread(() -> {
             int stamp = atomicStampedReference.getStamp();
             System.out.println(Thread.currentThread().getName() + "\t" + "---默认版本号: " + stamp);
@@ -39,7 +46,7 @@ public class CASABADemo {
                 e.printStackTrace();
             }
             boolean result = atomicStampedReference.compareAndSet(100, 20210308, stamp, stamp + 1);
-            System.out.println(Thread.currentThread().getName() + "\t" + "---操作成功否：" + result + "\t" + atomicStampedReference.getStamp() + "\t" + atomicStampedReference.getReference());
+            System.out.println(Thread.currentThread().getName() + "\t" + "---操作成功否：" + result + ", 原因是 期望的版本号："+stamp+"\t ,现在实际的版本号：" + atomicStampedReference.getStamp() + "\t 现在的引用值：" + atomicStampedReference.getReference());
         }, "t4").start();
     }
 

@@ -10,7 +10,7 @@ import java.util.Stack;
 public class CheckKuohao {
 
     public static void main(String[] args) {
-        String str = "{[(()]}";
+        String str = "{[((x+y)]}";
         boolean result = isStrVallid(str);
         System.out.println("result: " + result);
 

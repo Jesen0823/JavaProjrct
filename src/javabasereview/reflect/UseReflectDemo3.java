@@ -15,18 +15,20 @@ public class UseReflectDemo3 {
             e.printStackTrace();
         }
         Mountain m = null;
+        Mountain m2 = null;
         Constructor<?> cons[] = c.getConstructors();
+        for (Constructor<?> con : cons) {
+            System.out.println("构造函数： "+con.getName()+" ,参数个数： "+con.getParameterCount());
+        }
         // 向构造方法中传递参数，此方法可用可变参数接收并实例化对象
         try {
+            m2 = (Mountain) cons[0].newInstance();
             m = (Mountain) cons[1].newInstance("印地安思山脉",3699);
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
 
         System.out.println(m);
+        System.out.println(m2);
     }
 }

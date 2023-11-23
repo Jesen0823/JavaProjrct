@@ -6,7 +6,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.LongAccumulator;
 import java.util.concurrent.atomic.LongAdder;
-
+/**
+ * 比较高并发场景下 synchronized，AtomicInteger，AtomicLong，LongAdder，LongAccumulator 的处理效率
+ * 点赞5000万次，花费时间依次是(ms)：
+ *              3658,         1891,          1576,      207,       179
+ *
+ * */
 class ClickNumber {
     int number = 0;
 

@@ -14,6 +14,7 @@ public class CompletableFutureTaskDemo {
         ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(1, 20,
                 1L, TimeUnit.SECONDS, new LinkedBlockingDeque<>(50),
                 Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
+
         CompletableFuture.supplyAsync(() -> {
             try {
                 TimeUnit.SECONDS.sleep(2);

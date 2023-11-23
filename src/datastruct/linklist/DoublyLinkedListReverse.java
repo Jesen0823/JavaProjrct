@@ -30,6 +30,15 @@ public class DoublyLinkedListReverse {
         return head;
     }
 
+    private static void printDoublyLink(ListNode head){
+        ListNode current = head;
+        while (current != null) {
+            System.out.print(current.val + " <-> ");
+            current = current.next;
+        }
+        System.out.print("null\n");
+    }
+
     public static void main(String[] args) {
         // 创建一个双端链表：1 <-> 2 <-> 3 <-> 4 <-> 5
         ListNode head = new ListNode(1);
@@ -46,16 +55,14 @@ public class DoublyLinkedListReverse {
         node4.next = node5;
         node5.prev = node4;
 
-        DoublyLinkedListReverse reverser = new DoublyLinkedListReverse();
-        ListNode reversedHead = reverser.reverse(head);
+        System.out.println("原链表：");
+        printDoublyLink(head);
 
         // 遍历并打印翻转后的双端链表：5 <-> 4 <-> 3 <-> 2 <-> 1
-        ListNode current = reversedHead;
-        while (current != null) {
-            System.out.print(current.val + " <-> ");
-            current = current.next;
-        }
-        System.out.print("null");
+        DoublyLinkedListReverse reverser = new DoublyLinkedListReverse();
+        ListNode reversedHead = reverser.reverse(head);
+        System.out.println("翻转后：");
+        printDoublyLink(reversedHead);
     }
 }
 

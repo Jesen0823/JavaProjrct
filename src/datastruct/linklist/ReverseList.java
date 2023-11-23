@@ -68,8 +68,8 @@ public class ReverseList {
         s2.next = s3;
         s3.next = s4;
         printLink(s1);
-        //SingleNode<String> firstNode = reverseV2(s1);
-        SingleNode<String> firstNode = reverseV1(s1,null);
+        SingleNode<String> firstNode = reverseV2(s1);
+        //SingleNode<String> firstNode = reverseV1(s1,null);
         printLink(firstNode);
     }
 }

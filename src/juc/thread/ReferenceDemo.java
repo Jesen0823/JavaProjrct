@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 class MyObject
 {
-    //一般这个方法工作中不用，此处为了讲解gc，给学生们演示
+    //一般这个方法工作中不用，此处为了讲解gc做演示
     @Override
     protected void finalize() throws Throwable
     {

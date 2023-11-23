@@ -13,6 +13,8 @@ package suanfa.tree2x;
  * 后序遍历（Postorder Traversal）：先按照后序遍历的顺序递归地遍历左子树，然后递归地遍历右子树，最后访问根节点。在后序遍历中，根节点的访问顺序在左右子树之后。
  *
  * 记忆提示：后序遍历可以记作「左-右-根」，即先遍历左子树，然后遍历右子树，最后访问根节点。
+ *
+ * 前中后，说的是根节点的遍历次序
  * */
 public class BinaryTreeTraversal {
     static class TreeNode {
@@ -60,6 +62,11 @@ public class BinaryTreeTraversal {
         root.right = node3;
         node2.left = node4;
         node2.right = node5;
+        /*
+        *     1
+        *   2   3
+        * 4   5
+        * */
 
         BinaryTreeTraversal traversal = new BinaryTreeTraversal();
 
